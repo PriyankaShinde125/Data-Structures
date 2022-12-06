@@ -65,14 +65,15 @@ public class MyLinkedList<T> {
     }
 
     public void insert(INode<T> firstNode, INode<T> newNode, INode<T> secondNode) {
-        if (head == null) {
+        if (head == null || tail == head) {
             setHead(firstNode);
             head.setNext(newNode);
             setTail(secondNode);
             newNode.setNext(tail);
-        }else {
+        }
+        else {
             firstNode.setNext(newNode);
-            firstNode.getNext().setNext(secondNode);
+            newNode.setNext(secondNode);
         }
     }
 }
