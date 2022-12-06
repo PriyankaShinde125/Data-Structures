@@ -32,13 +32,13 @@ public class MyLinkedList<T> {
 
     public void add(INode<T> newNode) {
         if (tail == null) {
-            tail = newNode;
+            setTail(newNode);
         }
         if (head == null) {
-            head = newNode;
+            setHead(newNode);
         } else {
             INode<T> tempNode = head;
-            head = newNode;
+            setHead(newNode);
             head.setNext(tempNode);
         }
     }
@@ -53,14 +53,26 @@ public class MyLinkedList<T> {
 
     public void append(INode<T> newNode) {
         if (head == null) {
-            head = newNode;
+            setHead(newNode);
         }
         if (tail == null) {
-            tail = newNode;
+            setTail(newNode);
         } else {
-            INode<T> tempNode = tail;
-            tail = newNode;
+            INode<T> tempNode = getTail();
+            setTail(newNode);
             tempNode.setNext(tail);
+        }
+    }
+
+    public void insert(INode<T> firstNode, INode<T> newNode, INode<T> secondNode) {
+        if (head == null) {
+            setHead(firstNode);
+            head.setNext(newNode);
+            setTail(secondNode);
+            newNode.setNext(tail);
+        }else {
+            firstNode.setNext(newNode);
+            firstNode.getNext().setNext(secondNode);
         }
     }
 }
