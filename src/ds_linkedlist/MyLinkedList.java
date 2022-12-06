@@ -50,4 +50,17 @@ public class MyLinkedList<T> {
             currentNode = currentNode.getNext();
         }
     }
+
+    public void append(INode<T> newNode) {
+        if (head == null) {
+            head = newNode;
+        }
+        if (tail == null) {
+            tail = newNode;
+        } else {
+            INode<T> tempNode = tail;
+            tail = newNode;
+            tempNode.setNext(tail);
+        }
+    }
 }
