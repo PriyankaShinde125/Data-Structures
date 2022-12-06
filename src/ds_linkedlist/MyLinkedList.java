@@ -70,10 +70,23 @@ public class MyLinkedList<T> {
             head.setNext(newNode);
             setTail(secondNode);
             newNode.setNext(tail);
-        }
-        else {
+        } else {
             firstNode.setNext(newNode);
             newNode.setNext(secondNode);
         }
+    }
+
+    public INode<T> pop() {
+        INode<T> tempHead;
+        if(tail == head ){
+            tempHead = head;
+            setHead(null);
+            setTail(null);
+        } else {
+            tempHead = head;
+            setHead(head.getNext());
+            tempHead.setNext(null);
+        }
+            return tempHead;
     }
 }

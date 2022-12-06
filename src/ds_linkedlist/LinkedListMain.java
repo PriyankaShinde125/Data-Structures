@@ -10,5 +10,7 @@ public class LinkedListMain {
         list.add(firstNode);
         list.insert(firstNode, newNode, secondNode);
         list.printList();
+        System.out.println("\nDeleted : " + list.pop());
+        list.printList();
     }
 }
