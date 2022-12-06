@@ -1,15 +1,15 @@
 package ds_linkedlist;
 
-public class MyNode<T> implements INode<T>{
+public class MyNode<T> implements INode<T> {
     T key;
-    MyNode<T> next;
+    INode<T> next;
 
     public MyNode(T key) {
         this.key = key;
         this.next = null;
     }
 
-    public MyNode(T key, MyNode<T> next) {
+    public MyNode(T key, INode<T> next) {
         this.key = key;
         this.next = next;
     }
@@ -22,11 +22,19 @@ public class MyNode<T> implements INode<T>{
         this.key = key;
     }
 
-    public MyNode<T> getNext() {
+    public INode<T> getNext() {
         return next;
     }
 
-    public void setNext(MyNode<T> next) {
+    public void setNext(INode<T> next) {
         this.next = next;
+    }
+
+    @Override
+    public String toString() {
+        String nodeString = "" + key;
+        if (next != null)
+            nodeString = nodeString + "->";
+        return nodeString;
     }
 }
