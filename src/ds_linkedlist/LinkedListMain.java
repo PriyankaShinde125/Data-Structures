@@ -8,6 +8,7 @@ public class LinkedListMain {
     public static final int INSERT_BETWEEN_TWO = 3;
     public static final int POP_FIRST = 4;
     private static final int POP_LAST = 5;
+    public static final int SEARCH =6;
     public static final int EXIT = 0;
 
     MyLinkedList<Integer> list;
@@ -17,7 +18,7 @@ public class LinkedListMain {
         main.list = new MyLinkedList<>();
         INode<Integer> myNode;
         while (true) {
-            System.out.println("Enter your choice : \n1 : Add at first\n2 : Add at last\n3 : Insert between two nodes\n4 : Pop first\n5 : Pop last \n0 : Exit");
+            System.out.println("Enter your choice : \n1 : Add at first\n2 : Add at last\n3 : Insert between two nodes\n4 : Pop first\n5 : Pop last\n6 : Search \n0 : Exit");
             Scanner sc = new Scanner(System.in);
             int choice = sc.nextInt();
             switch (choice) {
@@ -50,6 +51,10 @@ public class LinkedListMain {
                 case POP_LAST:
                     System.out.println("\nDeleted : " + main.list.popLast());
                     System.out.println(main.list);
+                    break;
+                case SEARCH:
+                    System.out.println("Enter key to search in linked list");
+                    System.out.println(main.list.search(new MyNode<>(sc.nextInt())) ? "Key found" : "Key not found");
                     break;
                 case EXIT:
                     return;

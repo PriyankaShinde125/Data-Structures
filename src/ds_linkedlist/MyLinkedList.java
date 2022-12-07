@@ -95,7 +95,7 @@ public class MyLinkedList<T> {
         } else {
             tempTail = tail;
             currentNode = head;
-            while (currentNode.getNext()!=tail) {
+            while (currentNode.getNext() != tail) {
                 currentNode = currentNode.getNext();
             }
             setTail(currentNode);
@@ -107,5 +107,18 @@ public class MyLinkedList<T> {
     @Override
     public String toString() {
         return head.toString();
+    }
+
+    public boolean search(INode<T> myNode) {
+        boolean isFound = false;
+        currentNode = head;
+        while (currentNode != tail.getNext()) {
+            if (currentNode.getKey() == myNode.getKey()){
+                isFound = true;
+                break;
+            }
+                currentNode = currentNode.getNext();
+        }
+        return isFound;
     }
 }
