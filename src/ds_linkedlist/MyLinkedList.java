@@ -113,12 +113,27 @@ public class MyLinkedList<T> {
         boolean isFound = false;
         currentNode = head;
         while (currentNode != tail.getNext()) {
-            if (currentNode.getKey() == myNode.getKey()){
+            if (currentNode.getKey() == myNode.getKey()) {
                 isFound = true;
                 break;
             }
-                currentNode = currentNode.getNext();
+            currentNode = currentNode.getNext();
         }
         return isFound;
+    }
+
+    public void insertAfter(INode<T> insertAfter, INode<T> myNode) {
+        currentNode = getHead();
+        while (currentNode.getKey() != insertAfter.getKey()) {
+            currentNode = currentNode.getNext();
+        }
+        if(currentNode == tail){
+            currentNode.setNext(myNode);
+           setTail(myNode);
+        }else {
+            INode<T> temp = currentNode.getNext();
+            currentNode.setNext(myNode);
+            myNode.setNext(temp);
+        }
     }
 }
