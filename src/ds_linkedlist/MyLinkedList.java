@@ -43,14 +43,6 @@ public class MyLinkedList<T> {
         }
     }
 
-    void printList() {
-        currentNode = head;
-        while (currentNode != null) {
-            System.out.print(currentNode);
-            currentNode = currentNode.getNext();
-        }
-    }
-
     public void append(INode<T> newNode) {
         if (head == null) {
             setHead(newNode);
@@ -71,14 +63,18 @@ public class MyLinkedList<T> {
             setTail(secondNode);
             newNode.setNext(tail);
         } else {
-            firstNode.setNext(newNode);
+            currentNode = head;
+            while (currentNode.getKey() != firstNode.getKey() && currentNode.getNext().getKey() != secondNode.getKey()) {
+                currentNode = currentNode.getNext();
+            }
+            currentNode.setNext(newNode);
             newNode.setNext(secondNode);
         }
     }
 
-    public INode<T> pop() {
+    public INode<T> popFirst() {
         INode<T> tempHead;
-        if(tail == head ){
+        if (tail == head) {
             tempHead = head;
             setHead(null);
             setTail(null);
@@ -87,6 +83,29 @@ public class MyLinkedList<T> {
             setHead(head.getNext());
             tempHead.setNext(null);
         }
-            return tempHead;
+        return tempHead;
+    }
+
+    public INode<T> popLast() {
+        INode<T> tempTail;
+        if (tail == head) {
+            tempTail = tail;
+            setHead(null);
+            setTail(null);
+        } else {
+            tempTail = tail;
+            currentNode = head;
+            while (currentNode.getNext()!=tail) {
+                currentNode = currentNode.getNext();
+            }
+            setTail(currentNode);
+            tail.setNext(null);
+        }
+        return tempTail;
+    }
+
+    @Override
+    public String toString() {
+        return head.toString();
     }
 }

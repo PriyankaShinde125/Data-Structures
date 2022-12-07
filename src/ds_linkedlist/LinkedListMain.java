@@ -1,16 +1,59 @@
 package ds_linkedlist;
 
+import java.util.Scanner;
+
 public class LinkedListMain {
+    public static final int ADD_FIRST = 1;
+    public static final int APPEND = 2;
+    public static final int INSERT_BETWEEN_TWO = 3;
+    public static final int POP_FIRST = 4;
+    private static final int POP_LAST = 5;
+    public static final int EXIT = 0;
+
+    MyLinkedList<Integer> list;
+
     public static void main(String[] args) {
-        MyLinkedList<Integer> list = new MyLinkedList<>();
-        INode<Integer> firstNode = new MyNode<>(56);
-        INode<Integer> secondNode = new MyNode<>(70);
-        INode<Integer> newNode = new MyNode<>(30);
-        list.add(secondNode);
-        list.add(firstNode);
-        list.insert(firstNode, newNode, secondNode);
-        list.printList();
-        System.out.println("\nDeleted : " + list.pop());
-        list.printList();
+        LinkedListMain main = new LinkedListMain();
+        main.list = new MyLinkedList<>();
+        INode<Integer> myNode;
+        while (true) {
+            System.out.println("Enter your choice : \n1 : Add at first\n2 : Add at last\n3 : Insert between two nodes\n4 : Pop first\n5 : Pop last \n0 : Exit");
+            Scanner sc = new Scanner(System.in);
+            int choice = sc.nextInt();
+            switch (choice) {
+                case ADD_FIRST:
+                    System.out.println("Enter element to add at first : ");
+                    myNode = new MyNode<>(sc.nextInt());
+                    main.list.add(myNode);
+                    System.out.println(main.list);
+                    break;
+                case APPEND:
+                    System.out.println("Enter element to add at Last : ");
+                    myNode = new MyNode<>(sc.nextInt());
+                    main.list.append(myNode);
+                    System.out.println(main.list);
+                    break;
+                case INSERT_BETWEEN_TWO:
+                    System.out.println("Enter first Node : ");
+                    INode<Integer> firstNode = new MyNode<>(sc.nextInt());
+                    System.out.println("Enter second node : ");
+                    INode<Integer> secondNode = new MyNode<>(sc.nextInt());
+                    System.out.println("Enter node to insert : ");
+                    myNode = new MyNode<>(sc.nextInt());
+                    main.list.insert(firstNode, myNode, secondNode);
+                    System.out.println(main.list);
+                    break;
+                case POP_FIRST:
+                    System.out.println("\nDeleted : " + main.list.popFirst());
+                    System.out.println(main.list);
+                    break;
+                case POP_LAST:
+                    System.out.println("\nDeleted : " + main.list.popLast());
+                    System.out.println(main.list);
+                    break;
+                case EXIT:
+                    return;
+            }
+        }
     }
 }

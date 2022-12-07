@@ -32,9 +32,10 @@ public class MyNode<T> implements INode<T> {
 
     @Override
     public String toString() {
-        String nodeString = "" + key;
+        StringBuilder nodeString = new StringBuilder();
+              nodeString.append(key);
         if (next != null)
-            nodeString = nodeString + "->";
-        return nodeString;
+            nodeString = nodeString.append("->"+next);
+        return nodeString.toString();
     }
 }
