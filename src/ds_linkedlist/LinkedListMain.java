@@ -10,6 +10,7 @@ public class LinkedListMain {
     private static final int POP_LAST = 5;
     public static final int SEARCH = 6;
     public static final int INSERT_AFTER_SPECIFIC_NODE = 7;
+    public static final int DELETE_NODE = 8;
     public static final int EXIT = 0;
 
     MyLinkedList<Integer> list;
@@ -19,7 +20,7 @@ public class LinkedListMain {
         main.list = new MyLinkedList<>();
         INode<Integer> myNode;
         while (true) {
-            System.out.println("Enter your choice : \n1 : Add at first\n2 : Add at last\n3 : Insert between two nodes\n4 : Pop first\n5 : Pop last\n6 : Search\n7 : Insert after given node \n0 : Exit");
+            System.out.println("Enter your choice : \n1 : Add at first\n2 : Add at last\n3 : Insert between two nodes\n4 : Pop first\n5 : Pop last\n6 : Search\n7 : Insert after given node\n8 : Delete node\n0 : Exit");
             Scanner sc = new Scanner(System.in);
             int choice = sc.nextInt();
             switch (choice) {
@@ -59,10 +60,16 @@ public class LinkedListMain {
                     break;
                 case INSERT_AFTER_SPECIFIC_NODE:
                     System.out.println("Enter node to insert ");
-                    myNode=new MyNode<>(sc.nextInt());
+                    myNode = new MyNode<>(sc.nextInt());
                     System.out.println("After which node do you want to insert ? ");
-                    INode<Integer> insertAfter=new MyNode<>(sc.nextInt());
-                    main.list.insertAfter(insertAfter,myNode);
+                    INode<Integer> insertAfter = new MyNode<>(sc.nextInt());
+                    main.list.insertAfter(insertAfter, myNode);
+                    System.out.println(main.list);
+                    break;
+                case DELETE_NODE:
+                    System.out.println("Enter element to delete : ");
+                    main.list.delete(new MyNode<>(sc.nextInt()));
+                    System.out.println("Size after deleting node : "+main.list.size());
                     System.out.println(main.list);
                     break;
                 case EXIT:

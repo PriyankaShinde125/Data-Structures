@@ -127,13 +127,41 @@ public class MyLinkedList<T> {
         while (currentNode.getKey() != insertAfter.getKey()) {
             currentNode = currentNode.getNext();
         }
-        if(currentNode == tail){
+        if (currentNode == tail) {
             currentNode.setNext(myNode);
-           setTail(myNode);
-        }else {
+            setTail(myNode);
+        } else {
             INode<T> temp = currentNode.getNext();
             currentNode.setNext(myNode);
             myNode.setNext(temp);
         }
+    }
+
+    public void delete(INode<T> deleteNode) {
+        INode<T> temp = null;
+        currentNode = getHead();
+        while (currentNode != tail) {
+
+            if (currentNode.getKey() == deleteNode.getKey()) {
+                temp.setNext(currentNode.getNext());
+                break;
+            }
+            temp = currentNode;
+            currentNode = currentNode.getNext();
+        }
+        currentNode = currentNode.getNext();
+    }
+
+    int size() {
+        int size = 0;
+        if(getHead() != null){
+            currentNode = getHead();
+            size++;
+            while (currentNode != getTail()) {
+                size++;
+                currentNode = currentNode.getNext();
+            }
+        }
+        return size;
     }
 }
