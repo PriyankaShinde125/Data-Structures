@@ -1,18 +1,16 @@
 package ds_linkedlist;
 
-public class MyLinkedList<T> {
+public class MyUnorderedList<T> {
     INode<T> head;
     INode<T> tail;
     INode<T> currentNode;
 
-    public MyLinkedList(INode<T> head, INode<T> tail) {
+    public MyUnorderedList(INode<T> head, INode<T> tail) {
         this.head = head;
         this.tail = tail;
     }
 
-    public MyLinkedList() {
-
-    }
+    public MyUnorderedList() {}
 
     public INode<T> getHead() {
         return head;
@@ -139,25 +137,31 @@ public class MyLinkedList<T> {
 
     public void delete(INode<T> deleteNode) {
         INode<T> temp = null;
-        currentNode = getHead();
-        while (currentNode != tail) {
-
-            if (currentNode.getKey() == deleteNode.getKey()) {
-                temp.setNext(currentNode.getNext());
-                break;
+        if (head.getKey() == deleteNode.getKey()) {
+            setHead(head.getNext());
+        }else {
+            currentNode = getHead();
+            while (currentNode != null && currentNode.getKey() != deleteNode.getKey()) {
+                temp = currentNode;
+                currentNode = currentNode.getNext();
             }
-            temp = currentNode;
-            currentNode = currentNode.getNext();
+            if (currentNode == tail) {
+                temp.setNext(null);
+                setTail(temp);
+            }
+            if (currentNode != null) {
+                temp.setNext(currentNode.getNext());
+                currentNode.setNext(null);
+            }
         }
-        currentNode = currentNode.getNext();
     }
 
     int size() {
         int size = 0;
-        if(getHead() != null){
+        if (getHead() != null) {
             currentNode = getHead();
             size++;
-            while (currentNode != getTail()) {
+            while (currentNode != getTail() && currentNode != null) {
                 size++;
                 currentNode = currentNode.getNext();
             }
@@ -167,5 +171,39 @@ public class MyLinkedList<T> {
 
     public boolean isEmpty() {
         return head == null;
+    }
+
+    public INode<T> getElementFromIndex(int index) {
+        int indexSetter = 0;
+        if (size() < index) {
+            return null;
+        }
+        currentNode = getHead();
+        indexSetter++;
+        while (indexSetter < index) {
+            indexSetter++;
+            currentNode = currentNode.getNext();
+        }
+        return currentNode;
+    }
+
+    public Integer getIndexOf(INode<T> myNode) {
+        int indexOf = 0;
+        if (search(myNode)) {
+            currentNode = getHead();
+            indexOf++;
+            while (currentNode.getKey() != myNode.getKey()) {
+                indexOf++;
+                currentNode = currentNode.getNext();
+            }
+        } else return null;
+        return indexOf;
+    }
+
+    public boolean removeFromIndex(int index) {
+        if (!isEmpty()) {
+            delete(getElementFromIndex(index));
+            return true;
+        } else return false;
     }
 }
