@@ -11,6 +11,11 @@ public class LinkedListMain {
     public static final int SEARCH = 6;
     public static final int INSERT_AFTER_SPECIFIC_NODE = 7;
     public static final int DELETE_NODE = 8;
+    public static final int FIND_INDEX = 9;
+    public static final int IS_EMPTY = 10;
+    public static final int GET_ELEMENT_AT_INDEX=11;
+    public static final int GET_INDEX_OF_ELEMENT=12;
+
     public static final int EXIT = 0;
 
     MyLinkedList<Integer> list;
@@ -69,8 +74,11 @@ public class LinkedListMain {
                 case DELETE_NODE:
                     System.out.println("Enter element to delete : ");
                     main.list.delete(new MyNode<>(sc.nextInt()));
-                    System.out.println("Size after deleting node : "+main.list.size());
+                    System.out.println("Size after deleting node : " + main.list.size());
                     System.out.println(main.list);
+                    break;
+                case IS_EMPTY:
+                    System.out.println(main.list.isEmpty() ? "List is empty" : "List is not empty");
                     break;
                 case EXIT:
                     return;

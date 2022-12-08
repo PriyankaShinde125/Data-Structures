@@ -164,4 +164,8 @@ public class MyLinkedList<T> {
         }
         return size;
     }
+
+    public boolean isEmpty() {
+        return head == null;
+    }
 }
