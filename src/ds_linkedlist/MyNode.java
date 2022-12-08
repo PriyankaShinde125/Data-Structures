@@ -1,6 +1,6 @@
 package ds_linkedlist;
 
-public class MyNode<T> implements INode<T> {
+public class MyNode<T extends Comparable<T>> implements INode<T> {
     T key;
     INode<T> next;
 
@@ -37,5 +37,9 @@ public class MyNode<T> implements INode<T> {
         if (next != null)
             nodeString = nodeString.append("->"+next);
         return nodeString.toString();
+    }
+    @Override
+    public int compareTo(INode<T> o) {
+        return this.key.compareTo(o.getKey());
     }
 }

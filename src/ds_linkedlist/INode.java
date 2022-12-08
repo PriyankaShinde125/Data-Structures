@@ -1,6 +1,6 @@
 package ds_linkedlist;
 
-public interface INode<T> {
+public interface INode<T>{
     T getKey();
 
     void setKey(T key);
@@ -8,4 +8,6 @@ public interface INode<T> {
     INode<T> getNext();
 
     void setNext(INode<T> next);
+
+    int compareTo(INode<T> o);
 }

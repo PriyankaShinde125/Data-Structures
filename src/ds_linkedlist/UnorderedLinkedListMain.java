@@ -2,7 +2,7 @@ package ds_linkedlist;
 
 import java.util.Scanner;
 
-public class LinkedListMain {
+public class UnorderedLinkedListMain {
     public static final int ADD_FIRST = 1;
     public static final int APPEND = 2;
     public static final int INSERT_BETWEEN_TWO = 3;
@@ -18,11 +18,11 @@ public class LinkedListMain {
     public static final int REMOVE_ELEMENT_FROM_INDEX = 12;
     public static final int EXIT = 0;
 
-    MyUnorderedList<Integer> list;
+    MyLinkedList<Integer> list;
 
     public static void main(String[] args) {
-        LinkedListMain main = new LinkedListMain();
-        main.list = new MyUnorderedList<>();
+        UnorderedLinkedListMain main = new UnorderedLinkedListMain();
+        main.list = new MyLinkedList<>();
         INode<Integer> myNode;
         while (true) {
             System.out.println("Enter your choice : \n1 : Add at first\n2 : Append at last\n3 : Insert between two nodes\n4 : Pop first\n5 : Pop last\n6 : Search\n7 : Insert after given node\n8 : Delete node" +

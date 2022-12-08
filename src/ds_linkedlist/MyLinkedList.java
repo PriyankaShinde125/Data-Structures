@@ -1,16 +1,16 @@
 package ds_linkedlist;
 
-public class MyUnorderedList<T> {
+public class MyLinkedList<T> {
     INode<T> head;
     INode<T> tail;
     INode<T> currentNode;
 
-    public MyUnorderedList(INode<T> head, INode<T> tail) {
+    public MyLinkedList(INode<T> head, INode<T> tail) {
         this.head = head;
         this.tail = tail;
     }
 
-    public MyUnorderedList() {}
+    public MyLinkedList() {}
 
     public INode<T> getHead() {
         return head;
