@@ -156,7 +156,7 @@ public class MyLinkedList<T> {
         }
     }
 
-    int size() {
+   public int size() {
         int size = 0;
         if (getHead() != null) {
             currentNode = getHead();

@@ -2,6 +2,7 @@ package ds_stack;
 
 import ds_linkedlist.INode;
 import ds_linkedlist.MyLinkedList;
+
 public class MyStack<T> {
     MyLinkedList<T> myLinkedList;
 
@@ -15,6 +16,22 @@ public class MyStack<T> {
 
     @Override
     public String toString() {
-        return  myLinkedList.toString();
+        return myLinkedList.toString();
+    }
+
+    public INode<T> pop() {
+        return myLinkedList.popFirst();
+    }
+
+    public T peak() {
+        return myLinkedList.getHead().getKey();
+    }
+
+    public boolean isEmpty() {
+        return myLinkedList.isEmpty();
+    }
+
+    public int size() {
+        return myLinkedList.size();
     }
 }
