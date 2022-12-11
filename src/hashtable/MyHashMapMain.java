@@ -1,9 +1,11 @@
 package hashtable;
 
 
+import java.util.Scanner;
+
 public class MyHashMapMain {
     MyHashMap<String, Integer> myHashMap;
-    MyLinkedHashMap<String,Integer> myLinkedHashMap;
+    MyLinkedHashMap<String, Integer> myLinkedHashMap;
 
     public static void main(String[] args) {
         MyHashMapMain myHashMapMain = new MyHashMapMain();
@@ -21,8 +23,8 @@ public class MyHashMapMain {
         System.out.println(myHashMapMain.myHashMap);
         System.out.println(myHashMapMain.myHashMap.get("to"));
 
-        myHashMapMain.myLinkedHashMap=new MyLinkedHashMap<>();
-        String[] wordsOfLargeParagraph="Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations".toLowerCase().split(" ");
+        myHashMapMain.myLinkedHashMap = new MyLinkedHashMap<>();
+        String[] wordsOfLargeParagraph = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations".toLowerCase().split(" ");
         for (String word : wordsOfLargeParagraph) {
             Integer value = myHashMapMain.myLinkedHashMap.get(word);
             if (value == null)
@@ -31,7 +33,15 @@ public class MyHashMapMain {
                 value++;
             myHashMapMain.myLinkedHashMap.add(word, value);
         }
+        System.out.println("Enter key to get frequency ");
+        Scanner sc = new Scanner(System.in);
+        String key = sc.next();
+        System.out.println("Frequency of " + key + " = " + myHashMapMain.myLinkedHashMap.get(key));
+
+        System.out.println("Enter key to remove :");
+        key = sc.next();
+        MyMapNode removedNode = (MyMapNode) myHashMapMain.myLinkedHashMap.remove(key);
+        System.out.println(removedNode == null ? "Key not present in map" : "Removed : " + removedNode);
         System.out.println(myHashMapMain.myLinkedHashMap);
-        System.out.println(myHashMapMain.myLinkedHashMap.get("paranoid"));
     }
 }

@@ -48,6 +48,17 @@ public class MyLinkedHashMap<T extends Comparable, V> {
             }
     }
 
+    public INode<T> remove(T key) {
+        int index = getIndex(key);
+        MyLinkedList<T> myLinkedList = bucketArrayList.get(index);
+        MyMapNode<T, V> myMapNode = (MyMapNode<T, V>) myLinkedList.search(new MyNode<T>(key));
+        if (myMapNode == null) {
+            return null;
+        }
+        myLinkedList.delete(myMapNode);
+        return myMapNode;
+    }
+
     @Override
     public String toString() {
         String hashMap = "";
