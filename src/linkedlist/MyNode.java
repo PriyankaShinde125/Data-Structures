@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class MyNode<T extends Comparable<T>> implements INode<T> {
+public class MyNode<T extends Comparable> implements INode<T> {
     T key;
     INode<T> next;
 
