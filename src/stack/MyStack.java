@@ -1,7 +1,7 @@
-package ds_stack;
+package stack;
 
-import ds_linkedlist.INode;
-import ds_linkedlist.MyLinkedList;
+import linkedlist.INode;
+import linkedlist.MyLinkedList;
 
 public class MyStack<T> {
     MyLinkedList<T> myLinkedList;

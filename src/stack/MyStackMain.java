@@ -1,6 +1,6 @@
-package ds_stack;
+package stack;
 
-import ds_linkedlist.MyNode;
+import linkedlist.MyNode;
 
 import java.util.Scanner;
 

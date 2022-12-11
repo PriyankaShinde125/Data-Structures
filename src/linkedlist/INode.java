@@ -1,4 +1,4 @@
-package ds_linkedlist;
+package linkedlist;
 
 public interface INode<T>{
     T getKey();

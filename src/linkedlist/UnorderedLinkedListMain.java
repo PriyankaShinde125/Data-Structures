@@ -1,4 +1,4 @@
-package ds_linkedlist;
+package linkedlist;
 
 import java.util.Scanner;
 
@@ -53,8 +53,7 @@ public class UnorderedLinkedListMain {
                     System.out.println(main.list);
                     break;
                 case POP_FIRST:
-                    System.out.println("\nDeleted : " + main.list.popFirst());
-                    System.out.println(main.list);
+                    System.out.println( (myNode=main.list.popFirst()) == null ? "List is empty" : "\nDeleted : " +myNode+"\n"+main.list);
                     break;
                 case POP_LAST:
                     System.out.println("\nDeleted : " + main.list.popLast());
@@ -62,7 +61,7 @@ public class UnorderedLinkedListMain {
                     break;
                 case SEARCH:
                     System.out.println("Enter key to search in linked list");
-                    System.out.println(main.list.search(new MyNode<>(sc.nextInt())) ? "Key found" : "Key not found");
+                    System.out.println(main.list.search(new MyNode<>(sc.nextInt())) != null ? "Key found" : "Key not found");
                     break;
                 case INSERT_AFTER_SPECIFIC_NODE:
                     System.out.println("Enter node to insert ");

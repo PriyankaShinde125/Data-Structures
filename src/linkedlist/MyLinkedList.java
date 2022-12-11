@@ -1,4 +1,4 @@
-package ds_linkedlist;
+package linkedlist;
 
 public class MyLinkedList<T> {
     INode<T> head;
@@ -104,20 +104,18 @@ public class MyLinkedList<T> {
 
     @Override
     public String toString() {
-        return head.toString();
+        return String.valueOf(head);
     }
 
-    public boolean search(INode<T> myNode) {
-        boolean isFound = false;
+    public INode<T> search(INode<T> myNode) {
         currentNode = head;
-        while (currentNode != tail.getNext()) {
-            if (currentNode.getKey() == myNode.getKey()) {
-                isFound = true;
+        while (currentNode != null) {
+            if (currentNode.getKey().equals(myNode.getKey())) {
                 break;
             }
             currentNode = currentNode.getNext();
         }
-        return isFound;
+        return currentNode;
     }
 
     public void insertAfter(INode<T> insertAfter, INode<T> myNode) {
@@ -189,7 +187,7 @@ public class MyLinkedList<T> {
 
     public Integer getIndexOf(INode<T> myNode) {
         int indexOf = 0;
-        if (search(myNode)) {
+        if (search(myNode)!=null) {
             currentNode = getHead();
             indexOf++;
             while (currentNode.getKey() != myNode.getKey()) {

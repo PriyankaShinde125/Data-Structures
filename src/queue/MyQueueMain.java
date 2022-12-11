@@ -1,6 +1,6 @@
-package ds_queue;
+package queue;
 
-import ds_linkedlist.MyNode;
+import linkedlist.MyNode;
 
 import java.util.Scanner;
 

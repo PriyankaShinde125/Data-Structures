@@ -1,7 +1,7 @@
-package ds_queue;
+package queue;
 
-import ds_linkedlist.INode;
-import ds_linkedlist.MyLinkedList;
+import linkedlist.INode;
+import linkedlist.MyLinkedList;
 
 public class MyQueue<T> {
     MyLinkedList<T> myQueue;
